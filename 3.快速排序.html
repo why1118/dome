@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>快速排序</title>
+</head>
+<body>
+    <script>
+        
+        function quickSort(arr){
+            if(arr.length < 2){
+                return arr;
+            }
+            // 选在一个基准的元素，假设为第一个
+            var point = arr[0];
+            // 遍历剩下的元素，将小于point的放入数组min，大于point的放入数组max
+            var min = [];
+            var max = [];
+            for(var i = 1; i < arr.length; i++){
+                if(arr[i] <= point){
+                    min.push(arr[i]);
+                }
+                if(arr[i] > point){
+                    max.push(arr[i]);
+                }
+            }
+            // 把再次排序后的min 、point、 再次排序后的max合并为一个数组并return
+            var sortMin = quickSort(min);
+            sortMin.push(point);
+            var concatArr = sortMin.concat(quickSort(max));
+            return concatArr;
+        }    
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冒泡排序</title>
+</head>
+<body>
+    <script>
+        function bubbleSort(arr){
+            // 记录素组的长度
+            var len = arr.length;
+            // 开始摆放天秤，总共摆放len次，j表示已经排序好的元素的个数
+            for(var j = 0; j < len; j++){
+                // 从后向前去摆放天秤，每次比较相邻两个数组的大小，仅仅比较到已经排好序的元素
+                for(var i = len-1; i > j; i--){
+                    // 发现靠后的元素比靠前的元素更小
+                    if(arr[i] < arr[i-1]){
+                        // 这两个元素就交换位置
+                        var temp = arr[i-1];
+                        arr[i-1] = arr[i];
+                        arr[i] = temp;
+                    }
+                }
+            }
+            // 循环结束后，输出该数组（排序好的数组）
+            return arr;
+        }
+        bubbleSort([2,5,6,1,4,0,8,9,2,3,1])
+    </script>
+</body>
+</html>

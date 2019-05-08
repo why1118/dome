@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选择排序</title>
+</head>
+<body>
+    <script>
+        // 查找数组中最小元素的方法,返回数组中最小元素所对应的索引
+        function findSmallest(arr){
+            // 用smallest来记录最小值，假设索引为0的元素是最小值；
+            var smallest = arr[0];
+            // 用smallest_index来记录最小值的索引,假设最小值的索引为0；
+            var smallest_index = 0;
+            // 遍历剩下的元素
+            for(var i = 1; i < arr.length; i++){
+                // 在遍历过程中，如果发现某个元素比smallest还小
+                if(arr[i] < smallest){
+                    // 让smallest记录更小的元素
+                    smallest = arr[i];
+                    // 让smallest_index记录更小的元素的索引
+                    smallest_index = i;
+                }
+            }
+            // 遍历结束后能够保证 smallest记录的是最小元素的值，smallest_index记录的是最小元素的索引
+            return smallest_index;
+        }
+        // 选择排序
+        function selectionSort(arr){
+            // 创建一个新数组用来存储排序后的结果
+            var newArr = [];
+            // 只要数组中的元素不为空，就要一直进行排序
+            while(arr.length > 0){
+                // 每次找到最小的元素
+                var smallest = findSmallest(arr);
+                // 把最小的元素从数组中取出，并添加到新数组中；
+                newArr.push(arr.splice(smallest,1)[0]);
+            }
+            // 返回排序完成的数组；
+            return newArr;
+        }
+
+        selectionSort([2,5,6,2,4,5,6]);
+    </script>
+</body>
+</html>
